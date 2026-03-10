@@ -5,6 +5,14 @@ import { notFound, unprocessable } from "../errors.js";
 import { agentService } from "./agents.js";
 import { notifyHireApproved } from "./hire-hook.js";
 
+export type ApprovalResolutionResult = {
+  approval: typeof approvals.$inferSelect;
+  /** True if the state transitioned from pending/revision_requested to the terminal state. */
+  stateChanged: boolean;
+  /** For hire_agent approvals, the agent ID that was created or activated. */
+  hireApprovedAgentId?: string | null;
+};
+
 export function approvalService(db: Db) {
   const agentsSvc = agentService(db);
   const canResolveStatuses = new Set(["pending", "revision_requested"]);
@@ -40,8 +48,14 @@ export function approvalService(db: Db) {
         .returning()
         .then((rows) => rows[0]),
 
-    approve: async (id: string, decidedByUserId: string, decisionNote?: string | null) => {
+    approve: async (id: string, decidedByUserId: string, decisionNote?: string | null): Promise<ApprovalResolutionResult> => {
       const existing = await getExistingApproval(id);
+
+      // Idempotent: if already approved with same decision, return without side effects
+      if (existing.status === "approved") {
+        return { approval: existing, stateChanged: false, hireApprovedAgentId: null };
+      }
+
       if (!canResolveStatuses.has(existing.status)) {
         throw unprocessable("Only pending or revision requested approvals can be approved");
       }
@@ -103,11 +117,17 @@ export function approvalService(db: Db) {
         }
       }
 
-      return updated;
+      return { approval: updated, stateChanged: true, hireApprovedAgentId };
     },
 
-    reject: async (id: string, decidedByUserId: string, decisionNote?: string | null) => {
+    reject: async (id: string, decidedByUserId: string, decisionNote?: string | null): Promise<ApprovalResolutionResult> => {
       const existing = await getExistingApproval(id);
+
+      // Idempotent: if already rejected, return without side effects
+      if (existing.status === "rejected") {
+        return { approval: existing, stateChanged: false };
+      }
+
       if (!canResolveStatuses.has(existing.status)) {
         throw unprocessable("Only pending or revision requested approvals can be rejected");
       }
@@ -134,7 +154,7 @@ export function approvalService(db: Db) {
         }
       }
 
-      return updated;
+      return { approval: updated, stateChanged: true };
     },
 
     requestRevision: async (id: string, decidedByUserId: string, decisionNote?: string | null) => {
