@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { Link, useLocation, useNavigate } from "@/lib/router";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
+import { useTranslation } from "react-i18next";
 import { approvalsApi } from "../api/approvals";
 import { accessApi } from "../api/access";
 import { ApiError } from "../api/client";
@@ -172,11 +173,13 @@ function FailedRunCard({
   issueById,
   agentName: linkedAgentName,
   onDismiss,
+  t,
 }: {
   run: HeartbeatRun;
   issueById: Map<string, Issue>;
   agentName: string | null;
   onDismiss: () => void;
+  t: (key: string, options?: Record<string, unknown>) => string;
 }) {
   const queryClient = useQueryClient();
   const navigate = useNavigate();
@@ -219,7 +222,7 @@ function FailedRunCard({
         type="button"
         onClick={onDismiss}
         className="absolute right-2 top-2 z-10 rounded-md p-1 text-muted-foreground opacity-0 transition-opacity hover:bg-accent hover:text-foreground group-hover:opacity-100"
-        aria-label="Dismiss"
+        aria-label={t("inbox.dismiss")}
       >
         <X className="h-4 w-4" />
       </button>
@@ -236,7 +239,7 @@ function FailedRunCard({
           </Link>
         ) : (
           <span className="block text-sm text-muted-foreground">
-            {run.errorCode ? `Error code: ${run.errorCode}` : "No linked issue"}
+            {run.errorCode ? `Error code: ${run.errorCode}` : t("inbox.no_linked_issue")}
           </span>
         )}
 
@@ -267,7 +270,7 @@ function FailedRunCard({
               disabled={retryRun.isPending}
             >
               <RotateCcw className="mr-1.5 h-3.5 w-3.5" />
-              {retryRun.isPending ? "Retrying…" : "Retry"}
+              {retryRun.isPending ? t("inbox.retrying") : t("inbox.retry")}
             </Button>
             <Button
               type="button"
@@ -277,7 +280,7 @@ function FailedRunCard({
               asChild
             >
               <Link to={`/agents/${run.agentId}/runs/${run.id}`}>
-                Open run
+                {t("inbox.open_run")}
                 <ArrowUpRight className="ml-1.5 h-3.5 w-3.5" />
               </Link>
             </Button>
@@ -303,6 +306,7 @@ function FailedRunCard({
 }
 
 export function Inbox() {
+  const { t } = useTranslation("pages");
   const { selectedCompanyId } = useCompany();
   const { setBreadcrumbs } = useBreadcrumbs();
   const navigate = useNavigate();
@@ -323,8 +327,8 @@ export function Inbox() {
   });
 
   useEffect(() => {
-    setBreadcrumbs([{ label: "Inbox" }]);
-  }, [setBreadcrumbs]);
+    setBreadcrumbs([{ label: t("inbox.title") }]);
+  }, [setBreadcrumbs, t]);
 
   const {
     data: approvals,
@@ -524,7 +528,7 @@ export function Inbox() {
   });
 
   if (!selectedCompanyId) {
-    return <EmptyState icon={InboxIcon} message="Select a company to view inbox." />;
+    return <EmptyState icon={InboxIcon} message={t("inbox.select_company")} />;
   }
 
   const hasRunFailures = failedRuns.length > 0;
@@ -597,7 +601,7 @@ export function Inbox() {
                 value: "new",
                 label: (
                   <>
-                    New
+                    {t("inbox.new")}
                     {newItemCount > 0 && (
                       <span className="ml-1.5 rounded-full bg-blue-500/20 px-1.5 py-0.5 text-[10px] font-medium text-blue-500">
                         {newItemCount}
@@ -606,7 +610,7 @@ export function Inbox() {
                   </>
                 ),
               },
-              { value: "all", label: "All" },
+              { value: "all", label: t("inbox.all") },
             ]}
           />
         </Tabs>
@@ -621,13 +625,13 @@ export function Inbox() {
                 <SelectValue placeholder="Category" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="everything">All categories</SelectItem>
-                <SelectItem value="issues_i_touched">My recent issues</SelectItem>
-                <SelectItem value="join_requests">Join requests</SelectItem>
-                <SelectItem value="approvals">Approvals</SelectItem>
-                <SelectItem value="failed_runs">Failed runs</SelectItem>
-                <SelectItem value="alerts">Alerts</SelectItem>
-                <SelectItem value="stale_work">Stale work</SelectItem>
+                <SelectItem value="everything">{t("inbox.categories.everything")}</SelectItem>
+                <SelectItem value="issues_i_touched">{t("inbox.categories.issues_i_touched")}</SelectItem>
+                <SelectItem value="join_requests">{t("inbox.categories.join_requests")}</SelectItem>
+                <SelectItem value="approvals">{t("inbox.categories.approvals")}</SelectItem>
+                <SelectItem value="failed_runs">{t("inbox.categories.failed_runs")}</SelectItem>
+                <SelectItem value="alerts">{t("inbox.categories.alerts")}</SelectItem>
+                <SelectItem value="stale_work">{t("inbox.categories.stale_work")}</SelectItem>
               </SelectContent>
             </Select>
 
@@ -640,9 +644,9 @@ export function Inbox() {
                   <SelectValue placeholder="Approval status" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="all">All approval statuses</SelectItem>
-                  <SelectItem value="actionable">Needs action</SelectItem>
-                  <SelectItem value="resolved">Resolved</SelectItem>
+                  <SelectItem value="all">{t("inbox.approval_filters.all")}</SelectItem>
+                  <SelectItem value="actionable">{t("inbox.approval_filters.actionable")}</SelectItem>
+                  <SelectItem value="resolved">{t("inbox.approval_filters.resolved")}</SelectItem>
                 </SelectContent>
               </Select>
             )}
@@ -662,8 +666,8 @@ export function Inbox() {
           icon={InboxIcon}
           message={
             tab === "new"
-              ? "No issues you're involved in yet."
-              : "No inbox items match these filters."
+              ? t("inbox.no_touched_issues")
+              : t("inbox.no_filter_match")
           }
         />
       )}
@@ -673,7 +677,7 @@ export function Inbox() {
           {showSeparatorBefore("approvals") && <Separator />}
           <div>
             <h3 className="mb-3 text-sm font-semibold uppercase tracking-wide text-muted-foreground">
-              {tab === "new" ? "Approvals Needing Action" : "Approvals"}
+              {tab === "new" ? t("approvals.needing_action") : t("inbox.categories.approvals")}
             </h3>
             <div className="grid gap-3">
               {approvalsToRender.map((approval) => (
@@ -701,7 +705,7 @@ export function Inbox() {
           {showSeparatorBefore("join_requests") && <Separator />}
           <div>
             <h3 className="mb-3 text-sm font-semibold uppercase tracking-wide text-muted-foreground">
-              Join Requests
+              {t("inbox.join_requests")}
             </h3>
             <div className="grid gap-3">
               {joinRequests.map((joinRequest) => (
@@ -710,11 +714,11 @@ export function Inbox() {
                     <div className="space-y-1">
                       <p className="text-sm font-medium">
                         {joinRequest.requestType === "human"
-                          ? "Human join request"
-                          : `Agent join request${joinRequest.agentName ? `: ${joinRequest.agentName}` : ""}`}
+                          ? t("inbox.human_join_request")
+                          : `${t("inbox.agent_join_request")}${joinRequest.agentName ? `: ${joinRequest.agentName}` : ""}`}
                       </p>
                       <p className="text-xs text-muted-foreground">
-                        requested {timeAgo(joinRequest.createdAt)} from IP {joinRequest.requestIp}
+                        {t("inbox.requested")} {timeAgo(joinRequest.createdAt)} from IP {joinRequest.requestIp}
                       </p>
                       {joinRequest.requestEmailSnapshot && (
                         <p className="text-xs text-muted-foreground">
@@ -732,14 +736,14 @@ export function Inbox() {
                         disabled={approveJoinMutation.isPending || rejectJoinMutation.isPending}
                         onClick={() => rejectJoinMutation.mutate(joinRequest)}
                       >
-                        Reject
+                        {t("inbox.reject")}
                       </Button>
                       <Button
                         size="sm"
                         disabled={approveJoinMutation.isPending || rejectJoinMutation.isPending}
                         onClick={() => approveJoinMutation.mutate(joinRequest)}
                       >
-                        Approve
+                        {t("inbox.approve")}
                       </Button>
                     </div>
                   </div>
@@ -755,7 +759,7 @@ export function Inbox() {
           {showSeparatorBefore("failed_runs") && <Separator />}
           <div>
             <h3 className="mb-3 text-sm font-semibold uppercase tracking-wide text-muted-foreground">
-              Failed Runs
+              {t("inbox.failed_runs")}
             </h3>
             <div className="grid gap-3">
               {failedRuns.map((run) => (
@@ -765,6 +769,7 @@ export function Inbox() {
                   issueById={issueById}
                   agentName={agentName(run.agentId)}
                   onDismiss={() => dismiss(`run:${run.id}`)}
+                  t={t}
                 />
               ))}
             </div>
@@ -777,7 +782,7 @@ export function Inbox() {
           {showSeparatorBefore("alerts") && <Separator />}
           <div>
             <h3 className="mb-3 text-sm font-semibold uppercase tracking-wide text-muted-foreground">
-              Alerts
+              {t("inbox.alerts")}
             </h3>
             <div className="divide-y divide-border border border-border">
               {showAggregateAgentError && (
@@ -789,14 +794,16 @@ export function Inbox() {
                     <AlertTriangle className="h-4 w-4 shrink-0 text-red-600 dark:text-red-400" />
                     <span className="text-sm">
                       <span className="font-medium">{dashboard!.agents.error}</span>{" "}
-                      {dashboard!.agents.error === 1 ? "agent has" : "agents have"} errors
+                      {dashboard!.agents.error === 1
+                        ? t("inbox.agent_error", { count: dashboard!.agents.error })
+                        : t("inbox.agent_errors", { count: dashboard!.agents.error })}
                     </span>
                   </Link>
                   <button
                     type="button"
                     onClick={() => dismiss("alert:agent-errors")}
                     className="rounded-md p-1 text-muted-foreground opacity-0 transition-opacity hover:bg-accent hover:text-foreground group-hover/alert:opacity-100"
-                    aria-label="Dismiss"
+                    aria-label={t("inbox.dismiss")}
                   >
                     <X className="h-3.5 w-3.5" />
                   </button>
@@ -810,16 +817,14 @@ export function Inbox() {
                   >
                     <AlertTriangle className="h-4 w-4 shrink-0 text-yellow-400" />
                     <span className="text-sm">
-                      Budget at{" "}
-                      <span className="font-medium">{dashboard!.costs.monthUtilizationPercent}%</span>{" "}
-                      utilization this month
+                      {t("inbox.budget_utilization", { percent: dashboard!.costs.monthUtilizationPercent })}
                     </span>
                   </Link>
                   <button
                     type="button"
                     onClick={() => dismiss("alert:budget")}
                     className="rounded-md p-1 text-muted-foreground opacity-0 transition-opacity hover:bg-accent hover:text-foreground group-hover/alert:opacity-100"
-                    aria-label="Dismiss"
+                    aria-label={t("inbox.dismiss")}
                   >
                     <X className="h-3.5 w-3.5" />
                   </button>
@@ -835,7 +840,7 @@ export function Inbox() {
           {showSeparatorBefore("stale_work") && <Separator />}
           <div>
             <h3 className="mb-3 text-sm font-semibold uppercase tracking-wide text-muted-foreground">
-              Stale Work
+              {t("inbox.stale_work")}
             </h3>
             <div className="divide-y divide-border border border-border">
               {staleIssues.map((issue) => (
@@ -871,7 +876,7 @@ export function Inbox() {
                         })()}
                       <span className="text-xs text-muted-foreground sm:hidden">&middot;</span>
                       <span className="shrink-0 text-xs text-muted-foreground sm:order-last">
-                        updated {timeAgo(issue.updatedAt)}
+                        {t("inbox.updated")} {timeAgo(issue.updatedAt)}
                       </span>
                     </span>
                   </Link>
@@ -879,7 +884,7 @@ export function Inbox() {
                     type="button"
                     onClick={() => dismiss(`stale:${issue.id}`)}
                     className="mt-0.5 rounded-md p-1 text-muted-foreground opacity-0 transition-opacity hover:bg-accent hover:text-foreground group-hover/stale:opacity-100 sm:mt-0"
-                    aria-label="Dismiss"
+                    aria-label={t("inbox.dismiss")}
                   >
                     <X className="h-3.5 w-3.5" />
                   </button>
@@ -895,7 +900,7 @@ export function Inbox() {
           {showSeparatorBefore("issues_i_touched") && <Separator />}
           <div>
             <h3 className="mb-3 text-sm font-semibold uppercase tracking-wide text-muted-foreground">
-              My Recent Issues
+              {t("inbox.my_recent_issues")}
             </h3>
             <div className="divide-y divide-border border border-border">
               {touchedIssues.map((issue) => {
@@ -956,8 +961,8 @@ export function Inbox() {
                         </span>
                         <span className="text-xs text-muted-foreground sm:order-last">
                           {issue.lastExternalCommentAt
-                            ? `commented ${timeAgo(issue.lastExternalCommentAt)}`
-                            : `updated ${timeAgo(issue.updatedAt)}`}
+                            ? `${t("inbox.commented")} ${timeAgo(issue.lastExternalCommentAt)}`
+                            : `${t("inbox.updated")} ${timeAgo(issue.updatedAt)}`}
                         </span>
                       </span>
                     </span>
