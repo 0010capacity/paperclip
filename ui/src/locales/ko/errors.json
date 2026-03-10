@@ -1,0 +1,67 @@
+{
+  "api": {
+    "network_error": "네트워크 오류. 연결 상태를 확인해 주세요.",
+    "unauthorized": "인증되지 않음. 다시 로그인해 주세요.",
+    "forbidden": "이 작업을 수행할 권한이 없습니다.",
+    "not_found": "요청한 리소스를 찾을 수 없습니다.",
+    "server_error": "서버 오류. 나중에 다시 시도해 주세요.",
+    "validation_error": "잘못된 데이터가 제공되었습니다.",
+    "unknown": "예기치 않은 오류가 발생했습니다."
+  },
+  "validation": {
+    "required": "필수 입력 항목입니다",
+    "email": "유효한 이메일 주소를 입력해 주세요",
+    "min_length": "최소 {{min}}자 이상이어야 합니다",
+    "max_length": "최대 {{max}}자까지 입력 가능합니다",
+    "url": "유효한 URL을 입력해 주세요",
+    "number": "유효한 숫자를 입력해 주세요",
+    "positive_number": "양수를 입력해 주세요"
+  },
+  "company": {
+    "not_found": "회사를 찾을 수 없습니다",
+    "no_company_selected": "회사가 선택되지 않았습니다. 위의 전환기에서 회사를 선택하세요.",
+    "create_failed": "회사 생성 실패",
+    "update_failed": "회사 업데이트 실패",
+    "archive_failed": "회사 보관 실패"
+  },
+  "agent": {
+    "not_found": "에이전트를 찾을 수 없습니다",
+    "create_failed": "에이전트 생성 실패",
+    "update_failed": "에이전트 업데이트 실패",
+    "terminate_failed": "에이전트 종료 실패",
+    "no_adapter": "이 에이전트에 구성된 어댑터가 없습니다"
+  },
+  "issue": {
+    "not_found": "이슈를 찾을 수 없습니다",
+    "create_failed": "이슈 생성 실패",
+    "update_failed": "이슈 업데이트 실패",
+    "delete_failed": "이슈 삭제 실패"
+  },
+  "project": {
+    "not_found": "프로젝트를 찾을 수 없습니다",
+    "create_failed": "프로젝트 생성 실패",
+    "update_failed": "프로젝트 업데이트 실패",
+    "workspace_failed": "워크스페이스 생성 실패"
+  },
+  "goal": {
+    "not_found": "목표를 찾을 수 없습니다",
+    "create_failed": "목표 생성 실패",
+    "update_failed": "목표 업데이트 실패"
+  },
+  "approval": {
+    "not_found": "승인을 찾을 수 없습니다",
+    "approve_failed": "승인 실패",
+    "reject_failed": "거부 실패"
+  },
+  "auth": {
+    "sign_in_failed": "로그인 실패",
+    "sign_out_failed": "로그아웃 실패",
+    "session_expired": "세션이 만료되었습니다. 다시 로그인해 주세요.",
+    "invalid_credentials": "이메일 또는 비밀번호가 올바르지 않습니다"
+  },
+  "file": {
+    "upload_failed": "파일 업로드 실패",
+    "file_too_large": "파일이 너무 큽니다",
+    "invalid_type": "잘못된 파일 형식입니다"
+  }
+}

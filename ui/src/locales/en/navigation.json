@@ -1,0 +1,47 @@
+{
+  "sidebar": {
+    "select_company": "Select company",
+    "new_issue": "New Issue",
+    "dashboard": "Dashboard",
+    "inbox": "Inbox",
+    "work": "Work",
+    "issues": "Issues",
+    "goals": "Goals",
+    "projects": "Projects",
+    "agents": "Agents",
+    "company": "Company",
+    "org": "Org",
+    "costs": "Costs",
+    "activity": "Activity",
+    "settings": "Settings"
+  },
+  "pages": {
+    "dashboard": "Dashboard",
+    "inbox": "Inbox",
+    "issues": "Issues",
+    "issue_detail": "Issue",
+    "goals": "Goals",
+    "goal_detail": "Goal",
+    "projects": "Projects",
+    "project_detail": "Project",
+    "agents": "Agents",
+    "agent_detail": "Agent",
+    "approvals": "Approvals",
+    "costs": "Costs",
+    "activity": "Activity",
+    "company_settings": "Company Settings",
+    "org_chart": "Org Chart",
+    "new_agent": "New Agent",
+    "auth": "Sign In",
+    "companies": "Companies"
+  },
+  "breadcrumbs": {
+    "home": "Home",
+    "dashboard": "Dashboard",
+    "issues": "Issues",
+    "goals": "Goals",
+    "projects": "Projects",
+    "agents": "Agents",
+    "settings": "Settings"
+  }
+}

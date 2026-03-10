@@ -1,0 +1,83 @@
+{
+  "bootstrap": {
+    "title": "인스턴스 설정 필요",
+    "no_admin": "아직 인스턴스 관리자가 없습니다. Paperclip 환경에서 다음 명령을 실행하여 첫 번째 관리자 초대 URL을 생성하세요:",
+    "invite_active": "아직 인스턴스 관리자가 없습니다. 부트스트랩 초대가 이미 활성화되어 있습니다. Paperclip 시작 로그에서 첫 번째 관리자 초대 URL을 확인하거나, 다음 명령을 실행하여 새로 생성하세요:",
+    "command": "pnpm paperclipai auth bootstrap-ceo"
+  },
+  "no_company": {
+    "title": "첫 번째 회사 만들기",
+    "description": "회사를 만들어 시작하세요.",
+    "button": "새 회사"
+  },
+  "dashboard": {
+    "title": "대시보드",
+    "welcome": "환영합니다",
+    "no_active_agents": "활성 에이전트 없음",
+    "no_issues": "이슈 없음"
+  },
+  "issues": {
+    "title": "이슈",
+    "all": "전체",
+    "active": "활성",
+    "backlog": "백로그",
+    "done": "완료",
+    "recent": "최근",
+    "new_issue": "새 이슈",
+    "no_issues": "이슈가 없습니다"
+  },
+  "agents": {
+    "title": "에이전트",
+    "all": "전체",
+    "active": "활성",
+    "paused": "일시중지",
+    "error": "오류",
+    "new_agent": "새 에이전트",
+    "no_agents": "에이전트가 없습니다"
+  },
+  "goals": {
+    "title": "목표",
+    "new_goal": "새 목표",
+    "no_goals": "목표가 없습니다"
+  },
+  "projects": {
+    "title": "프로젝트",
+    "new_project": "새 프로젝트",
+    "no_projects": "프로젝트가 없습니다"
+  },
+  "approvals": {
+    "title": "승인",
+    "pending": "대기중",
+    "all": "전체",
+    "no_approvals": "승인 항목 없음"
+  },
+  "costs": {
+    "title": "비용",
+    "this_month": "이번 달",
+    "total": "합계",
+    "by_agent": "에이전트별"
+  },
+  "activity": {
+    "title": "활동",
+    "no_activity": "최근 활동 없음"
+  },
+  "inbox": {
+    "title": "받은편지함",
+    "new": "새로운",
+    "all": "전체",
+    "no_items": "받은편지함이 비어있습니다"
+  },
+  "settings": {
+    "title": "설정",
+    "general": "일반",
+    "company": "회사"
+  },
+  "org": {
+    "title": "조직",
+    "chart": "조직도"
+  },
+  "auth": {
+    "title": "로그인",
+    "sign_out": "로그아웃"
+  }
+}

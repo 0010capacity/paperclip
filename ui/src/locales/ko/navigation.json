@@ -1,0 +1,47 @@
+{
+  "sidebar": {
+    "select_company": "회사 선택",
+    "new_issue": "새 이슈",
+    "dashboard": "대시보드",
+    "inbox": "받은편지함",
+    "work": "작업",
+    "issues": "이슈",
+    "goals": "목표",
+    "projects": "프로젝트",
+    "agents": "에이전트",
+    "company": "회사",
+    "org": "조직도",
+    "costs": "비용",
+    "activity": "활동",
+    "settings": "설정"
+  },
+  "pages": {
+    "dashboard": "대시보드",
+    "inbox": "받은편지함",
+    "issues": "이슈",
+    "issue_detail": "이슈",
+    "goals": "목표",
+    "goal_detail": "목표",
+    "projects": "프로젝트",
+    "project_detail": "프로젝트",
+    "agents": "에이전트",
+    "agent_detail": "에이전트",
+    "approvals": "승인",
+    "costs": "비용",
+    "activity": "활동",
+    "company_settings": "회사 설정",
+    "org_chart": "조직도",
+    "new_agent": "새 에이전트",
+    "auth": "로그인",
+    "companies": "회사"
+  },
+  "breadcrumbs": {
+    "home": "홈",
+    "dashboard": "대시보드",
+    "issues": "이슈",
+    "goals": "목표",
+    "projects": "프로젝트",
+    "agents": "에이전트",
+    "settings": "설정"
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "approval_card": {
+    "requested_by": "requested by",
+    "approve": "Approve",
+    "reject": "Reject",
+    "view_details": "View details",
+    "note": "Note"
+  },
+  "empty_state": {
+    "get_started": "Get Started"
+  },
+  "metric_card": {
+    "agents_enabled": "Agents Enabled",
+    "running": "running",
+    "paused": "paused",
+    "errors": "errors",
+    "tasks_in_progress": "Tasks In Progress",
+    "open": "open",
+    "blocked": "blocked",
+    "month_spend": "Month Spend",
+    "of_budget": "of {{budget}} budget",
+    "unlimited_budget": "Unlimited budget",
+    "pending_approvals": "Pending Approvals",
+    "stale_tasks": "stale tasks"
+  },
+  "chart_card": {
+    "run_activity": "Run Activity",
+    "issues_by_priority": "Issues by Priority",
+    "issues_by_status": "Issues by Status",
+    "success_rate": "Success Rate",
+    "last_14_days": "Last 14 days"
+  },
+  "dashboard": {
+    "welcome": "Welcome to Paperclip. Set up your first company and agent to get started.",
+    "select_company": "Create or select a company to view the dashboard.",
+    "no_agents": "You have no agents.",
+    "create_one_here": "Create one here",
+    "recent_activity": "Recent Activity",
+    "recent_tasks": "Recent Tasks",
+    "no_tasks_yet": "No tasks yet."
+  },
+  "command_palette": {
+    "placeholder": "Search commands...",
+    "no_results": "No commands found"
+  },
+  "filter_bar": {
+    "search": "Search...",
+    "filter": "Filter"
+  },
+  "kanban": {
+    "no_issues": "No issues in this column"
+  },
+  "activity_row": {
+    "created": "created",
+    "updated": "updated",
+    "assigned_to": "assigned to",
+    "commented_on": "commented on",
+    "status_changed": "status changed"
+  },
+  "language_switcher": {
+    "language": "Language",
+    "english": "English",
+    "korean": "한국어"
+  }
+}

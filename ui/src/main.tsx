@@ -1,4 +1,4 @@
-import { StrictMode } from "react";
+import { StrictMode, Suspense } from "react";
 import { createRoot } from "react-dom/client";
 import { BrowserRouter } from "@/lib/router";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
@@ -14,6 +14,7 @@ import { ThemeProvider } from "./context/ThemeContext";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import "@mdxeditor/editor/style.css";
 import "./index.css";
+import "./lib/i18n";
 
 if ("serviceWorker" in navigator) {
   window.addEventListener("load", () => {
@@ -33,7 +34,8 @@ const queryClient = new QueryClient({
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <QueryClientProvider client={queryClient}>
-      <ThemeProvider>
+      <Suspense fallback={<div className="flex items-center justify-center h-screen text-sm text-muted-foreground">Loading...</div>}>
+        <ThemeProvider>
         <CompanyProvider>
           <ToastProvider>
             <LiveUpdatesProvider>
@@ -53,7 +55,8 @@ createRoot(document.getElementById("root")!).render(
             </LiveUpdatesProvider>
           </ToastProvider>
         </CompanyProvider>
-      </ThemeProvider>
+        </ThemeProvider>
+      </Suspense>
     </QueryClientProvider>
   </StrictMode>
 );

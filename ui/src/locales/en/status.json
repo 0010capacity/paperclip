@@ -1,0 +1,159 @@
+{
+  "company": {
+    "status": {
+      "active": "Active",
+      "paused": "Paused",
+      "archived": "Archived"
+    }
+  },
+  "agent": {
+    "status": {
+      "active": "Active",
+      "paused": "Paused",
+      "idle": "Idle",
+      "running": "Running",
+      "error": "Error",
+      "pending_approval": "Pending Approval",
+      "terminated": "Terminated"
+    },
+    "role": {
+      "ceo": "CEO",
+      "cto": "CTO",
+      "cmo": "CMO",
+      "cfo": "CFO",
+      "engineer": "Engineer",
+      "designer": "Designer",
+      "pm": "PM",
+      "qa": "QA",
+      "devops": "DevOps",
+      "researcher": "Researcher",
+      "general": "General"
+    },
+    "adapter": {
+      "process": "Process",
+      "http": "HTTP",
+      "claude_local": "Claude Local",
+      "codex_local": "Codex Local",
+      "opencode_local": "OpenCode Local",
+      "pi_local": "Pi Local",
+      "cursor": "Cursor",
+      "openclaw_gateway": "OpenClaw Gateway"
+    }
+  },
+  "issue": {
+    "status": {
+      "backlog": "Backlog",
+      "todo": "To Do",
+      "in_progress": "In Progress",
+      "in_review": "In Review",
+      "done": "Done",
+      "blocked": "Blocked",
+      "cancelled": "Cancelled"
+    },
+    "priority": {
+      "critical": "Critical",
+      "high": "High",
+      "medium": "Medium",
+      "low": "Low"
+    }
+  },
+  "goal": {
+    "level": {
+      "company": "Company",
+      "team": "Team",
+      "agent": "Agent",
+      "task": "Task"
+    },
+    "status": {
+      "planned": "Planned",
+      "active": "Active",
+      "achieved": "Achieved",
+      "cancelled": "Cancelled"
+    }
+  },
+  "project": {
+    "status": {
+      "backlog": "Backlog",
+      "planned": "Planned",
+      "in_progress": "In Progress",
+      "completed": "Completed",
+      "cancelled": "Cancelled"
+    }
+  },
+  "approval": {
+    "type": {
+      "hire_agent": "Hire Agent",
+      "approve_ceo_strategy": "Approve CEO Strategy"
+    },
+    "status": {
+      "pending": "Pending",
+      "revision_requested": "Revision Requested",
+      "approved": "Approved",
+      "rejected": "Rejected",
+      "cancelled": "Cancelled"
+    }
+  },
+  "heartbeat": {
+    "run_status": {
+      "queued": "Queued",
+      "running": "Running",
+      "succeeded": "Succeeded",
+      "failed": "Failed",
+      "cancelled": "Cancelled",
+      "timed_out": "Timed Out"
+    },
+    "invocation_source": {
+      "timer": "Timer",
+      "assignment": "Assignment",
+      "on_demand": "On Demand",
+      "automation": "Automation"
+    }
+  },
+  "wakeup": {
+    "trigger": {
+      "manual": "Manual",
+      "ping": "Ping",
+      "callback": "Callback",
+      "system": "System"
+    },
+    "request_status": {
+      "queued": "Queued",
+      "deferred_issue_execution": "Deferred",
+      "claimed": "Claimed",
+      "coalesced": "Coalesced",
+      "skipped": "Skipped",
+      "completed": "Completed",
+      "failed": "Failed",
+      "cancelled": "Cancelled"
+    }
+  },
+  "membership": {
+    "status": {
+      "pending": "Pending",
+      "active": "Active",
+      "suspended": "Suspended"
+    }
+  },
+  "join_request": {
+    "status": {
+      "pending_approval": "Pending Approval",
+      "approved": "Approved",
+      "rejected": "Rejected"
+    },
+    "type": {
+      "human": "Human",
+      "agent": "Agent"
+    }
+  },
+  "invite": {
+    "type": {
+      "company_join": "Company Join",
+      "bootstrap_ceo": "Bootstrap CEO"
+    },
+    "join_type": {
+      "human": "Human",
+      "agent": "Agent",
+      "both": "Both"
+    }
+  }
+}

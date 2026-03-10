@@ -1,0 +1,83 @@
+{
+  "bootstrap": {
+    "title": "Instance setup required",
+    "no_admin": "No instance admin exists yet. Run this command in your Paperclip environment to generate the first admin invite URL:",
+    "invite_active": "No instance admin exists yet. A bootstrap invite is already active. Check your Paperclip startup logs for the first admin invite URL, or run this command to rotate it:",
+    "command": "pnpm paperclipai auth bootstrap-ceo"
+  },
+  "no_company": {
+    "title": "Create your first company",
+    "description": "Get started by creating a company.",
+    "button": "New Company"
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "welcome": "Welcome",
+    "no_active_agents": "No active agents",
+    "no_issues": "No issues"
+  },
+  "issues": {
+    "title": "Issues",
+    "all": "All",
+    "active": "Active",
+    "backlog": "Backlog",
+    "done": "Done",
+    "recent": "Recent",
+    "new_issue": "New Issue",
+    "no_issues": "No issues found"
+  },
+  "agents": {
+    "title": "Agents",
+    "all": "All",
+    "active": "Active",
+    "paused": "Paused",
+    "error": "Error",
+    "new_agent": "New Agent",
+    "no_agents": "No agents found"
+  },
+  "goals": {
+    "title": "Goals",
+    "new_goal": "New Goal",
+    "no_goals": "No goals found"
+  },
+  "projects": {
+    "title": "Projects",
+    "new_project": "New Project",
+    "no_projects": "No projects found"
+  },
+  "approvals": {
+    "title": "Approvals",
+    "pending": "Pending",
+    "all": "All",
+    "no_approvals": "No approvals"
+  },
+  "costs": {
+    "title": "Costs",
+    "this_month": "This Month",
+    "total": "Total",
+    "by_agent": "By Agent"
+  },
+  "activity": {
+    "title": "Activity",
+    "no_activity": "No recent activity"
+  },
+  "inbox": {
+    "title": "Inbox",
+    "new": "New",
+    "all": "All",
+    "no_items": "Inbox is empty"
+  },
+  "settings": {
+    "title": "Settings",
+    "general": "General",
+    "company": "Company"
+  },
+  "org": {
+    "title": "Organization",
+    "chart": "Org Chart"
+  },
+  "auth": {
+    "title": "Sign In",
+    "sign_out": "Sign Out"
+  }
+}

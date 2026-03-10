@@ -1,0 +1,67 @@
+{
+  "api": {
+    "network_error": "Network error. Please check your connection.",
+    "unauthorized": "Unauthorized. Please sign in again.",
+    "forbidden": "You don't have permission to perform this action.",
+    "not_found": "The requested resource was not found.",
+    "server_error": "Server error. Please try again later.",
+    "validation_error": "Invalid data provided.",
+    "unknown": "An unexpected error occurred."
+  },
+  "validation": {
+    "required": "This field is required",
+    "email": "Please enter a valid email address",
+    "min_length": "Must be at least {{min}} characters",
+    "max_length": "Must be at most {{max}} characters",
+    "url": "Please enter a valid URL",
+    "number": "Please enter a valid number",
+    "positive_number": "Please enter a positive number"
+  },
+  "company": {
+    "not_found": "Company not found",
+    "no_company_selected": "No company selected. Select a company from the switcher above.",
+    "create_failed": "Failed to create company",
+    "update_failed": "Failed to update company",
+    "archive_failed": "Failed to archive company"
+  },
+  "agent": {
+    "not_found": "Agent not found",
+    "create_failed": "Failed to create agent",
+    "update_failed": "Failed to update agent",
+    "terminate_failed": "Failed to terminate agent",
+    "no_adapter": "No adapter configured for this agent"
+  },
+  "issue": {
+    "not_found": "Issue not found",
+    "create_failed": "Failed to create issue",
+    "update_failed": "Failed to update issue",
+    "delete_failed": "Failed to delete issue"
+  },
+  "project": {
+    "not_found": "Project not found",
+    "create_failed": "Failed to create project",
+    "update_failed": "Failed to update project",
+    "workspace_failed": "Failed to create workspace"
+  },
+  "goal": {
+    "not_found": "Goal not found",
+    "create_failed": "Failed to create goal",
+    "update_failed": "Failed to update goal"
+  },
+  "approval": {
+    "not_found": "Approval not found",
+    "approve_failed": "Failed to approve",
+    "reject_failed": "Failed to reject"
+  },
+  "auth": {
+    "sign_in_failed": "Failed to sign in",
+    "sign_out_failed": "Failed to sign out",
+    "session_expired": "Your session has expired. Please sign in again.",
+    "invalid_credentials": "Invalid email or password"
+  },
+  "file": {
+    "upload_failed": "Failed to upload file",
+    "file_too_large": "File is too large",
+    "invalid_type": "Invalid file type"
+  }
+}

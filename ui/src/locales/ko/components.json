@@ -1,0 +1,65 @@
+{
+  "approval_card": {
+    "requested_by": "요청자",
+    "approve": "승인",
+    "reject": "거부",
+    "view_details": "상세 보기",
+    "note": "참고"
+  },
+  "empty_state": {
+    "get_started": "시작하기"
+  },
+  "metric_card": {
+    "agents_enabled": "활성 에이전트",
+    "running": "실행중",
+    "paused": "일시중지",
+    "errors": "오류",
+    "tasks_in_progress": "진행중인 작업",
+    "open": "열림",
+    "blocked": "차단됨",
+    "month_spend": "이번 달 지출",
+    "of_budget": "예산 {{budget}} 중",
+    "unlimited_budget": "무제한 예산",
+    "pending_approvals": "대기중인 승인",
+    "stale_tasks": "오래된 작업"
+  },
+  "chart_card": {
+    "run_activity": "실행 활동",
+    "issues_by_priority": "우선순위별 이슈",
+    "issues_by_status": "상태별 이슈",
+    "success_rate": "성공률",
+    "last_14_days": "최근 14일"
+  },
+  "dashboard": {
+    "welcome": "Paperclip에 오신 것을 환영합니다. 첫 번째 회사와 에이전트를 설정하여 시작하세요.",
+    "select_company": "대시보드를 보려면 회사를 만들거나 선택하세요.",
+    "no_agents": "에이전트가 없습니다.",
+    "create_one_here": "여기서 만들기",
+    "recent_activity": "최근 활동",
+    "recent_tasks": "최근 작업",
+    "no_tasks_yet": "아직 작업이 없습니다."
+  },
+  "command_palette": {
+    "placeholder": "명령 검색...",
+    "no_results": "명령을 찾을 수 없습니다"
+  },
+  "filter_bar": {
+    "search": "검색...",
+    "filter": "필터"
+  },
+  "kanban": {
+    "no_issues": "이 열에 이슈가 없습니다"
+  },
+  "activity_row": {
+    "created": "생성",
+    "updated": "수정",
+    "assigned_to": "할당됨",
+    "commented_on": "댓글 작성",
+    "status_changed": "상태 변경"
+  },
+  "language_switcher": {
+    "language": "언어",
+    "english": "English",
+    "korean": "한국어"
+  }
+}

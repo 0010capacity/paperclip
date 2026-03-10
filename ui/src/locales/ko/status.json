@@ -1,0 +1,159 @@
+{
+  "company": {
+    "status": {
+      "active": "활성",
+      "paused": "일시중지",
+      "archived": "보관됨"
+    }
+  },
+  "agent": {
+    "status": {
+      "active": "활성",
+      "paused": "일시중지",
+      "idle": "대기",
+      "running": "실행중",
+      "error": "오류",
+      "pending_approval": "승인 대기",
+      "terminated": "종료됨"
+    },
+    "role": {
+      "ceo": "CEO",
+      "cto": "CTO",
+      "cmo": "CMO",
+      "cfo": "CFO",
+      "engineer": "엔지니어",
+      "designer": "디자이너",
+      "pm": "PM",
+      "qa": "QA",
+      "devops": "DevOps",
+      "researcher": "연구원",
+      "general": "일반"
+    },
+    "adapter": {
+      "process": "프로세스",
+      "http": "HTTP",
+      "claude_local": "Claude 로컬",
+      "codex_local": "Codex 로컬",
+      "opencode_local": "OpenCode 로컬",
+      "pi_local": "Pi 로컬",
+      "cursor": "Cursor",
+      "openclaw_gateway": "OpenClaw 게이트웨이"
+    }
+  },
+  "issue": {
+    "status": {
+      "backlog": "백로그",
+      "todo": "할 일",
+      "in_progress": "진행중",
+      "in_review": "검토중",
+      "done": "완료",
+      "blocked": "차단됨",
+      "cancelled": "취소됨"
+    },
+    "priority": {
+      "critical": "긴급",
+      "high": "높음",
+      "medium": "보통",
+      "low": "낮음"
+    }
+  },
+  "goal": {
+    "level": {
+      "company": "회사",
+      "team": "팀",
+      "agent": "에이전트",
+      "task": "작업"
+    },
+    "status": {
+      "planned": "계획됨",
+      "active": "활성",
+      "achieved": "달성",
+      "cancelled": "취소됨"
+    }
+  },
+  "project": {
+    "status": {
+      "backlog": "백로그",
+      "planned": "계획됨",
+      "in_progress": "진행중",
+      "completed": "완료",
+      "cancelled": "취소됨"
+    }
+  },
+  "approval": {
+    "type": {
+      "hire_agent": "에이전트 고용",
+      "approve_ceo_strategy": "CEO 전략 승인"
+    },
+    "status": {
+      "pending": "대기중",
+      "revision_requested": "수정 요청됨",
+      "approved": "승인됨",
+      "rejected": "거부됨",
+      "cancelled": "취소됨"
+    }
+  },
+  "heartbeat": {
+    "run_status": {
+      "queued": "대기열",
+      "running": "실행중",
+      "succeeded": "성공",
+      "failed": "실패",
+      "cancelled": "취소됨",
+      "timed_out": "시간초과"
+    },
+    "invocation_source": {
+      "timer": "타이머",
+      "assignment": "할당",
+      "on_demand": "요청시",
+      "automation": "자동화"
+    }
+  },
+  "wakeup": {
+    "trigger": {
+      "manual": "수동",
+      "ping": "Ping",
+      "callback": "콜백",
+      "system": "시스템"
+    },
+    "request_status": {
+      "queued": "대기열",
+      "deferred_issue_execution": "지연됨",
+      "claimed": "확보됨",
+      "coalesced": "통합됨",
+      "skipped": "건너뜀",
+      "completed": "완료",
+      "failed": "실패",
+      "cancelled": "취소됨"
+    }
+  },
+  "membership": {
+    "status": {
+      "pending": "대기중",
+      "active": "활성",
+      "suspended": "정지됨"
+    }
+  },
+  "join_request": {
+    "status": {
+      "pending_approval": "승인 대기중",
+      "approved": "승인됨",
+      "rejected": "거부됨"
+    },
+    "type": {
+      "human": "사용자",
+      "agent": "에이전트"
+    }
+  },
+  "invite": {
+    "type": {
+      "company_join": "회사 참여",
+      "bootstrap_ceo": "초기 CEO"
+    },
+    "join_type": {
+      "human": "사용자",
+      "agent": "에이전트",
+      "both": "모두"
+    }
+  }
+}
