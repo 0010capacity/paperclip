@@ -850,26 +850,27 @@ function ConfigSummary({
   reportsToAgent: Agent | null;
   directReports: Agent[];
 }) {
+  const { t } = useTranslation("pages");
   const config = agent.adapterConfig as Record<string, unknown>;
   const promptText = typeof config?.promptTemplate === "string" ? config.promptTemplate : "";
 
   return (
     <div className="space-y-3">
       <div className="flex items-center justify-between">
-        <h3 className="text-sm font-medium">Configuration</h3>
+        <h3 className="text-sm font-medium">{t("agent_detail.configuration")}</h3>
         <Link
           to={`/agents/${agentRouteId}/configure`}
           className="flex items-center gap-1 text-xs text-muted-foreground hover:text-foreground transition-colors no-underline"
         >
           <Settings className="h-3 w-3" />
-          Manage &rarr;
+          {t("agent_detail.manage")} &rarr;
         </Link>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div className="border border-border rounded-lg p-4 space-y-3">
-          <h4 className="text-xs text-muted-foreground font-medium">Agent Details</h4>
+          <h4 className="text-xs text-muted-foreground font-medium">{t("agent_detail.agent_details")}</h4>
           <div className="space-y-2 text-sm">
-            <SummaryRow label="Adapter">
+            <SummaryRow label={t("agent_detail.adapter")}>
               <span className="font-mono">{adapterLabels[agent.adapterType] ?? agent.adapterType}</span>
               {String(config?.model ?? "") !== "" && (
                 <span className="text-muted-foreground ml-1">
@@ -877,31 +878,31 @@ function ConfigSummary({
                 </span>
               )}
             </SummaryRow>
-            <SummaryRow label="Heartbeat">
+            <SummaryRow label={t("agent_detail.heartbeat")}>
               {(agent.runtimeConfig as Record<string, unknown>)?.heartbeat
                 ? (() => {
                     const hb = (agent.runtimeConfig as Record<string, unknown>).heartbeat as Record<string, unknown>;
-                    if (!hb.enabled) return <span className="text-muted-foreground">Disabled</span>;
+                    if (!hb.enabled) return <span className="text-muted-foreground">{t("agent_detail.disabled")}</span>;
                     const sec = Number(hb.intervalSec) || 300;
                     const maxConcurrentRuns = Math.max(1, Math.floor(Number(hb.maxConcurrentRuns) || 1));
                     const intervalLabel = sec >= 60 ? `${Math.round(sec / 60)} min` : `${sec}s`;
                     return (
                       <span>
-                        Every {intervalLabel}
-                        {maxConcurrentRuns > 1 ? ` (max ${maxConcurrentRuns} concurrent)` : ""}
+                        {t("agent_detail.every")} {intervalLabel}
+                        {maxConcurrentRuns > 1 ? ` (${t("agent_detail.max")} ${maxConcurrentRuns} ${t("agent_detail.concurrent")})` : ""}
                       </span>
                     );
                   })()
-                : <span className="text-muted-foreground">Not configured</span>
+                : <span className="text-muted-foreground">{t("agent_detail.not_configured")}</span>
               }
             </SummaryRow>
-            <SummaryRow label="Last heartbeat">
+            <SummaryRow label={t("agent_detail.last_heartbeat")}>
               {agent.lastHeartbeatAt
                 ? <span>{relativeTime(agent.lastHeartbeatAt)}</span>
-                : <span className="text-muted-foreground">Never</span>
+                : <span className="text-muted-foreground">{t("agent_detail.never")}</span>
               }
             </SummaryRow>
-            <SummaryRow label="Reports to">
+            <SummaryRow label={t("agent_detail.reports_to")}>
               {reportsToAgent ? (
                 <Link
                   to={`/agents/${agentRouteRef(reportsToAgent)}`}
@@ -910,13 +911,13 @@ function ConfigSummary({
                   <Identity name={reportsToAgent.name} size="sm" />
                 </Link>
               ) : (
-                <span className="text-muted-foreground">Nobody (top-level)</span>
+                <span className="text-muted-foreground">{t("agent_detail.nobody_top_level")}</span>
               )}
             </SummaryRow>
           </div>
           {directReports.length > 0 && (
             <div className="pt-1">
-              <span className="text-xs text-muted-foreground">Direct reports</span>
+              <span className="text-xs text-muted-foreground">{t("agent_detail.direct_reports")}</span>
               <div className="mt-1 space-y-1">
                 {directReports.map((r) => (
                   <Link
@@ -936,14 +937,14 @@ function ConfigSummary({
           )}
           {agent.capabilities && (
             <div className="pt-1">
-              <span className="text-xs text-muted-foreground">Capabilities</span>
+              <span className="text-xs text-muted-foreground">{t("agent_detail.capabilities")}</span>
               <p className="text-sm mt-0.5">{agent.capabilities}</p>
             </div>
           )}
         </div>
         {promptText && (
           <div className="border border-border rounded-lg p-4 space-y-2">
-            <h4 className="text-xs text-muted-foreground font-medium">Prompt Template</h4>
+            <h4 className="text-xs text-muted-foreground font-medium">{t("agent_detail.prompt_template")}</h4>
             <pre className="text-xs text-muted-foreground line-clamp-[12] font-mono whitespace-pre-wrap">{promptText}</pre>
           </div>
         )}
@@ -1285,10 +1286,11 @@ function RunsTab({
   selectedRunId: string | null;
   adapterType: string;
 }) {
+  const { t } = useTranslation("pages");
   const { isMobile } = useSidebar();
 
   if (runs.length === 0) {
-    return <p className="text-sm text-muted-foreground">No runs yet.</p>;
+    return <p className="text-sm text-muted-foreground">{t("agent_detail.no_runs")}</p>;
   }
 
   // Sort by created descending
@@ -1310,7 +1312,7 @@ function RunsTab({
             className="flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors no-underline"
           >
             <ArrowLeft className="h-3.5 w-3.5" />
-            Back to runs
+            {t("agent_detail.back_to_runs")}
           </Link>
           <RunDetail key={selectedRun.id} run={selectedRun} agentRouteId={agentRouteId} adapterType={adapterType} />
         </div>

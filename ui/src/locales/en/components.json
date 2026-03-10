@@ -61,5 +61,68 @@
     "language": "Language",
     "english": "English",
     "korean": "한국어"
+  },
+  "issues_list": {
+    "new_issue": "New Issue",
+    "search_placeholder": "Search issues...",
+    "search_aria_label": "Search issues",
+    "view": {
+      "list_view": "List view",
+      "board_view": "Board view"
+    },
+    "filter": "Filter",
+    "filters": "Filters",
+    "filters_active": "Filters: {{count}}",
+    "clear": "Clear",
+    "quick_filters": "Quick filters",
+    "filters": {
+      "all": "All",
+      "active": "Active",
+      "backlog": "Backlog",
+      "done": "Done"
+    },
+    "status_label": "Status",
+    "priority_label": "Priority",
+    "assignee_label": "Assignee",
+    "labels": "Labels",
+    "sort": "Sort",
+    "sort_options": {
+      "status": "Status",
+      "priority": "Priority",
+      "title": "Title",
+      "created": "Created",
+      "updated": "Updated"
+    },
+    "group": "Group",
+    "group_options": {
+      "status": "Status",
+      "priority": "Priority",
+      "assignee": "Assignee",
+      "none": "None"
+    },
+    "empty_state": {
+      "message": "No issues match the current filters or search.",
+      "action": "Create Issue"
+    },
+    "live": "Live",
+    "assignee": "Assignee",
+    "search_agents": "Search agents...",
+    "no_assignee": "No assignee",
+    "unassigned": "Unassigned",
+    "status": {
+      "in_progress": "In Progress",
+      "todo": "To Do",
+      "backlog": "Backlog",
+      "in_review": "In Review",
+      "blocked": "Blocked",
+      "done": "Done",
+      "cancelled": "Cancelled"
+    },
+    "priority": {
+      "critical": "Critical",
+      "high": "High",
+      "medium": "Medium",
+      "low": "Low"
+    }
   }
 }
