@@ -148,6 +148,7 @@ export async function createApp(
     const uiRoot = path.resolve(__dirname, "../../ui");
     const { createServer: createViteServer } = await import("vite");
     const vite = await createViteServer({
+      configFile: path.resolve(uiRoot, "vite.config.ts"),
       root: uiRoot,
       appType: "spa",
       server: {
@@ -155,7 +156,6 @@ export async function createApp(
         allowedHosts: privateHostnameGateEnabled ? Array.from(privateHostnameAllowSet) : undefined,
       },
     });
-
     app.use(vite.middlewares);
     app.get(/.*/, async (req, res, next) => {
       try {

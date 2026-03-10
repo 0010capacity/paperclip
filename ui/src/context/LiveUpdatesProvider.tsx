@@ -588,7 +588,10 @@ export function LiveUpdatesProvider({ children }: { children: ReactNode }) {
         socket.onmessage = null;
         socket.onerror = null;
         socket.onclose = null;
-        socket.close(1000, "provider_unmount");
+        // Only close if OPEN - closing while CONNECTING causes browser error logs
+        if (socket.readyState === WebSocket.OPEN) {
+          socket.close(1000, "provider_unmount");
+        }
       }
     };
   }, [queryClient, selectedCompanyId, pushToast, currentUserId]);

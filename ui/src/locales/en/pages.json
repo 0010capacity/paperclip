@@ -12,9 +12,35 @@
   },
   "dashboard": {
     "title": "Dashboard",
-    "welcome": "Welcome",
-    "no_active_agents": "No active agents",
-    "no_issues": "No issues"
+    "welcome": "Welcome to Paperclip. Set up your first company and agent to get started.",
+    "get_started": "Get Started",
+    "select_company": "Create or select a company to view the dashboard.",
+    "no_agents": "You have no agents.",
+    "create_agent": "Create one here",
+    "metrics": {
+      "agents_enabled": "Agents Enabled",
+      "running": "running",
+      "paused": "paused",
+      "errors": "errors",
+      "tasks_in_progress": "Tasks In Progress",
+      "open": "open",
+      "blocked": "blocked",
+      "month_spend": "Month Spend",
+      "unlimited_budget": "Unlimited budget",
+      "of_budget": "of budget",
+      "pending_approvals": "Pending Approvals",
+      "stale_tasks": "stale tasks"
+    },
+    "charts": {
+      "run_activity": "Run Activity",
+      "issues_by_priority": "Issues by Priority",
+      "issues_by_status": "Issues by Status",
+      "success_rate": "Success Rate",
+      "last_14_days": "Last 14 days"
+    },
+    "recent_activity": "Recent Activity",
+    "recent_tasks": "Recent Tasks",
+    "no_tasks": "No tasks yet."
   },
   "issues": {
     "title": "Issues",

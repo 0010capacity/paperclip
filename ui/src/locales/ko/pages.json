@@ -12,9 +12,35 @@
   },
   "dashboard": {
     "title": "대시보드",
-    "welcome": "환영합니다",
-    "no_active_agents": "활성 에이전트 없음",
-    "no_issues": "이슈 없음"
+    "welcome": "Paperclip에 오신 것을 환영합니다. 첫 번째 회사와 에이전트를 설정하여 시작하세요.",
+    "get_started": "시작하기",
+    "select_company": "대시보드를 보려면 회사를 만들거나 선택하세요.",
+    "no_agents": "에이전트가 없습니다.",
+    "create_agent": "여기서 만들기",
+    "metrics": {
+      "agents_enabled": "활성 에이전트",
+      "running": "실행 중",
+      "paused": "일시 중지",
+      "errors": "오류",
+      "tasks_in_progress": "진행 중인 작업",
+      "open": "열림",
+      "blocked": "차단됨",
+      "month_spend": "이번 달 지출",
+      "unlimited_budget": "무제한 예산",
+      "of_budget": "예산 중",
+      "pending_approvals": "승인 대기",
+      "stale_tasks": "오래된 작업"
+    },
+    "charts": {
+      "run_activity": "실행 활동",
+      "issues_by_priority": "우선순위별 이슈",
+      "issues_by_status": "상태별 이슈",
+      "success_rate": "성공률",
+      "last_14_days": "최근 14일"
+    },
+    "recent_activity": "최근 활동",
+    "recent_tasks": "최근 작업",
+    "no_tasks": "아직 작업이 없습니다."
   },
   "issues": {
     "title": "이슈",

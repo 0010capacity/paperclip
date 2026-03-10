@@ -11,6 +11,7 @@ export default defineConfig({
     i18nextLoader({
       paths: ["./src/locales"],
       namespaceResolution: "basename",
+      parseLanguageFromKey: true,
     }),
   ],
   resolve: {
