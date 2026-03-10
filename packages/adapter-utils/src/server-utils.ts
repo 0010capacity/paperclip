@@ -41,7 +41,7 @@ export function parseObject(value: unknown): Record<string, unknown> {
 }
 
 export function asString(value: unknown, fallback: string): string {
-  return typeof value === "string" && value.length > 0 ? value : fallback;
+  return typeof value === "string" && value.trim().length > 0 ? value : fallback;
 }
 
 export function asNumber(value: unknown, fallback: number): number {
