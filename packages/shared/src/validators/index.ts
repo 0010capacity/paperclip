@@ -133,3 +133,26 @@ export {
   type UpdateMemberPermissions,
   type UpdateUserCompanyAccess,
 } from "./access.js";
+
+export {
+  ProposalPayloadSchema,
+  ProposeGoalPayloadSchema,
+  RequestBudgetPayloadSchema,
+  type ProposalPayload,
+} from "./proposal.js";
+
+export {
+  CreateMeetingSchema,
+  ConcludeMeetingSchema,
+  CreateMeetingMessageSchema,
+  type CreateMeetingInput,
+  type ConcludeMeetingInput,
+  type CreateMeetingMessageInput,
+} from "./meeting.js";
+
+export {
+  SendChatMessageSchema,
+  ResolveChatActionSchema,
+  type SendChatMessageInput,
+  type ResolveChatActionInput,
+} from "./chat.js";

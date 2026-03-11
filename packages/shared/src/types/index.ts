@@ -70,3 +70,19 @@ export type {
   CompanyPortabilityImportResult,
   CompanyPortabilityExportRequest,
 } from "./company-portability.js";
+export type {
+  Meeting,
+  MeetingType,
+  MeetingStatus,
+  MeetingTriggerType,
+  MeetingParticipant,
+  MeetingMessage,
+  MeetingMessageContentType,
+  MeetingMessageActionStatus,
+} from "./meeting.js";
+export type {
+  ChatMessage,
+  ChatSenderType,
+  ChatContentType,
+  ChatActionStatus,
+} from "./chat.js";

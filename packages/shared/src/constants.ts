@@ -149,7 +149,17 @@ export const PROJECT_COLORS = [
   "#3b82f6", // blue
 ] as const;
 
-export const APPROVAL_TYPES = ["hire_agent", "approve_ceo_strategy"] as const;
+export const APPROVAL_TYPES = [
+  "hire_agent",
+  "approve_ceo_strategy",
+  "propose_goal",
+  "propose_project",
+  "propose_strategy",
+  "request_budget",
+  "propose_process",
+  "propose_hiring",
+  "escalation",
+] as const;
 export type ApprovalType = (typeof APPROVAL_TYPES)[number];
 
 export const APPROVAL_STATUSES = [
@@ -212,6 +222,11 @@ export const LIVE_EVENT_TYPES = [
   "heartbeat.run.log",
   "agent.status",
   "activity.logged",
+  "chat.message",
+  "chat.action_resolved",
+  "meeting.started",
+  "meeting.message",
+  "meeting.concluded",
 ] as const;
 export type LiveEventType = (typeof LIVE_EVENT_TYPES)[number];
 
@@ -245,3 +260,29 @@ export const PERMISSION_KEYS = [
   "joins:approve",
 ] as const;
 export type PermissionKey = (typeof PERMISSION_KEYS)[number];
+
+// Meeting-related wake reasons
+export const MEETING_WAKE_REASONS = [
+  "sync_meeting_started",
+  "sync_meeting_message",
+  "async_meeting_invited",
+] as const;
+export type MeetingWakeReason = (typeof MEETING_WAKE_REASONS)[number];
+
+// Advisory actions (activity_log.action values)
+export const ADVISORY_ACTIONS = [
+  "agent.advisory.observation",
+  "agent.advisory.suggestion",
+  "agent.advisory.concern",
+  "agent.advisory.progress_note",
+] as const;
+export type AdvisoryAction = (typeof ADVISORY_ACTIONS)[number];
+
+// Proposal rate limits
+export const PROPOSAL_RATE_LIMITS = {
+  maxPendingProposalsPerAgent: 3,
+  maxProposalsPerAgentPerDay: 5,
+  maxAdvisoriesPerAgentPerDay: 10,
+  maxPendingProposalsPerCompany: 20,
+} as const;
+export type ProposalRateLimits = typeof PROPOSAL_RATE_LIMITS;

@@ -31,6 +31,9 @@ export {
   JOIN_REQUEST_TYPES,
   JOIN_REQUEST_STATUSES,
   PERMISSION_KEYS,
+  MEETING_WAKE_REASONS,
+  ADVISORY_ACTIONS,
+  PROPOSAL_RATE_LIMITS,
   type CompanyStatus,
   type DeploymentMode,
   type DeploymentExposure,
@@ -61,6 +64,9 @@ export {
   type JoinRequestType,
   type JoinRequestStatus,
   type PermissionKey,
+  type MeetingWakeReason,
+  type AdvisoryAction,
+  type ProposalRateLimits,
 } from "./constants.js";
 
 export type {
@@ -232,6 +238,11 @@ export {
 } from "./validators/index.js";
 
 export { API_PREFIX, API } from "./api.js";
+export {
+  MEETING_API,
+  CHAT_API,
+  ADVISORY_API,
+} from "./api-paths.js";
 export { normalizeAgentUrlKey, deriveAgentUrlKey, isUuidLike } from "./agent-url-key.js";
 export { deriveProjectUrlKey, normalizeProjectUrlKey } from "./project-url-key.js";
 export {
@@ -270,3 +281,9 @@ export {
   type SecretsLocalEncryptedConfig,
   type ConfigMeta,
 } from "./config-schema.js";
+
+export {
+  ROLE_MODEL_DEFAULTS,
+  getDefaultModelForRole,
+  type RoleModelDefault,
+} from "./role-model-defaults.js";
