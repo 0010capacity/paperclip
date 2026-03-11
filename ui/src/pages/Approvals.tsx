@@ -10,11 +10,23 @@ import { queryKeys } from "../lib/queryKeys";
 import { cn } from "../lib/utils";
 import { PageTabBar } from "../components/PageTabBar";
 import { Tabs } from "@/components/ui/tabs";
+import { Badge } from "@/components/ui/badge";
 import { ShieldCheck } from "lucide-react";
 import { ApprovalCard } from "../components/ApprovalCard";
 import { PageSkeleton } from "../components/PageSkeleton";
 
 type StatusFilter = "pending" | "all";
+type TypeFilter = "all" | "proposals" | "hiring" | "strategy";
+
+const PROPOSAL_TYPES = [
+  "propose_goal",
+  "propose_project",
+  "propose_strategy",
+  "request_budget",
+  "propose_process",
+  "propose_hiring",
+  "escalation",
+];
 
 export function Approvals() {
   const { t } = useTranslation("pages");
@@ -25,6 +37,7 @@ export function Approvals() {
   const location = useLocation();
   const pathSegment = location.pathname.split("/").pop() ?? "pending";
   const statusFilter: StatusFilter = pathSegment === "all" ? "all" : "pending";
+  const [typeFilter, setTypeFilter] = useState<TypeFilter>("all");
   const [actionError, setActionError] = useState<string | null>(null);
 
   useEffect(() => {
@@ -70,10 +83,21 @@ export function Approvals() {
     .filter(
       (a) => statusFilter === "all" || a.status === "pending" || a.status === "revision_requested",
     )
+    .filter((a) => {
+      if (typeFilter === "all") return true;
+      if (typeFilter === "proposals") return PROPOSAL_TYPES.includes(a.type);
+      if (typeFilter === "hiring") return a.type === "hire_agent";
+      if (typeFilter === "strategy") return a.type === "approve_ceo_strategy";
+      return true;
+    })
     .sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
 
   const pendingCount = (data ?? []).filter(
     (a) => a.status === "pending" || a.status === "revision_requested",
+  ).length;
+
+  const pendingProposalCount = (data ?? []).filter(
+    (a) => (a.status === "pending" || a.status === "revision_requested") && PROPOSAL_TYPES.includes(a.type),
   ).length;
 
   if (!selectedCompanyId) {
@@ -86,7 +110,7 @@ export function Approvals() {
 
   return (
     <div className="space-y-4">
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <Tabs value={statusFilter} onValueChange={(v) => navigate(`/approvals/${v}`)}>
           <PageTabBar items={[
             { value: "pending", label: <>{t("approvals.pending")}{pendingCount > 0 && (
@@ -100,6 +124,36 @@ export function Approvals() {
             { value: "all", label: t("approvals.all") },
           ]} />
         </Tabs>
+
+        {/* Type filter tabs */}
+        <div className="flex gap-1">
+          {(["all", "proposals", "hiring", "strategy"] as const).map((f) => (
+            <button
+              key={f}
+              onClick={() => setTypeFilter(f)}
+              className={cn(
+                "rounded-md px-2.5 py-1 text-xs transition",
+                typeFilter === f
+                  ? "bg-primary/10 font-medium text-primary"
+                  : "text-muted-foreground hover:bg-muted"
+              )}
+            >
+              {f === "all" && t("approvals.type.all")}
+              {f === "proposals" && (
+                <>
+                  {t("approvals.type.proposals")}
+                  {pendingProposalCount > 0 && (
+                    <Badge variant="secondary" className="ml-1.5 text-[10px]">
+                      {pendingProposalCount}
+                    </Badge>
+                  )}
+                </>
+              )}
+              {f === "hiring" && t("approvals.type.hiring")}
+              {f === "strategy" && t("approvals.type.strategy")}
+            </button>
+          ))}
+        </div>
       </div>
 
       {error && <p className="text-sm text-destructive">{error.message}</p>}

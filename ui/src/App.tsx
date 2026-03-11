@@ -22,6 +22,8 @@ import { ApprovalDetail } from "./pages/ApprovalDetail";
 import { Costs } from "./pages/Costs";
 import { Activity } from "./pages/Activity";
 import { Inbox } from "./pages/Inbox";
+import { Chat } from "./pages/Chat";
+import { Meetings } from "./pages/Meetings";
 import { CompanySettings } from "./pages/CompanySettings";
 import { DesignGuide } from "./pages/DesignGuide";
 import { OrgChart } from "./pages/OrgChart";
@@ -142,6 +144,8 @@ function boardRoutes() {
       <Route path="inbox" element={<Navigate to="/inbox/new" replace />} />
       <Route path="inbox/new" element={<Inbox />} />
       <Route path="inbox/all" element={<Inbox />} />
+      <Route path="chat" element={<Chat />} />
+      <Route path="meetings" element={<Meetings />} />
       <Route path="design-guide" element={<DesignGuide />} />
     </>
   );

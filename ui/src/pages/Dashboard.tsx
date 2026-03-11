@@ -24,6 +24,7 @@ import { Bot, CircleDot, DollarSign, ShieldCheck, LayoutDashboard } from "lucide
 import { ActiveAgentsPanel } from "../components/ActiveAgentsPanel";
 import { ChartCard, RunActivityChart, PriorityChart, IssueStatusChart, SuccessRateChart } from "../components/ActivityCharts";
 import { PageSkeleton } from "../components/PageSkeleton";
+import { AdvisoryFeed } from "../components/dashboard";
 import type { Agent, Issue } from "@paperclipai/shared";
 
 function getRecentIssues(issues: Issue[]): Issue[] {
@@ -278,7 +279,10 @@ export function Dashboard() {
             </ChartCard>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-4">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {/* Advisory Feed */}
+            <AdvisoryFeed companyId={selectedCompanyId!} />
+
             {/* Recent Activity */}
             {recentActivity.length > 0 && (
               <div className="min-w-0">

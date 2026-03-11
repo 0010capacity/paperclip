@@ -9,6 +9,8 @@ import {
   SquarePen,
   Network,
   Settings,
+  MessageSquare,
+  Users,
 } from "lucide-react";
 import { useQuery } from "@tanstack/react-query";
 import { useTranslation } from "react-i18next";
@@ -92,6 +94,8 @@ export function Sidebar() {
         <SidebarSection label={t("sidebar.work")}>
           <SidebarNavItem to="/issues" label={t("sidebar.issues")} icon={CircleDot} />
           <SidebarNavItem to="/goals" label={t("sidebar.goals")} icon={Target} />
+          <SidebarNavItem to="/chat" label={t("sidebar.chat")} icon={MessageSquare} />
+          <SidebarNavItem to="/meetings" label={t("sidebar.meetings")} icon={Users} />
         </SidebarSection>
 
         <SidebarProjects />

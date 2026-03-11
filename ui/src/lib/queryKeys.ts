@@ -71,4 +71,20 @@ export const queryKeys = {
   liveRuns: (companyId: string) => ["live-runs", companyId] as const,
   runIssues: (runId: string) => ["run-issues", runId] as const,
   org: (companyId: string) => ["org", companyId] as const,
+  meetings: {
+    list: (companyId: string) => ["meetings", companyId] as const,
+    detail: (meetingId: string) => ["meetings", "detail", meetingId] as const,
+    messages: (meetingId: string) => ["meetings", "messages", meetingId] as const,
+  },
+  chat: {
+    messages: (companyId: string) => ["chat", companyId] as const,
+  },
+  advisories: (companyId: string) => ["advisories", companyId] as const,
+  advisory: (advisoryId: string) => ["advisories", "detail", advisoryId] as const,
+};
+
+// Add list method to advisoriesApi namespace
+export const advisoriesKeys = {
+  list: (companyId: string) => ["advisories", companyId] as const,
+  detail: (advisoryId: string) => ["advisories", "detail", advisoryId] as const,
 };

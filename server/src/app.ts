@@ -24,6 +24,9 @@ import { sidebarBadgeRoutes } from "./routes/sidebar-badges.js";
 import { llmRoutes } from "./routes/llms.js";
 import { assetRoutes } from "./routes/assets.js";
 import { accessRoutes } from "./routes/access.js";
+import { meetingRoutes } from "./routes/meetings.js";
+import { chatRoutes } from "./routes/chat.js";
+import { advisoryRoutes } from "./routes/advisories.js";
 import type { BetterAuthSessionResult } from "./auth/better-auth.js";
 
 type UiMode = "none" | "static" | "vite-dev";
@@ -120,6 +123,9 @@ export async function createApp(
       allowedHostnames: opts.allowedHostnames,
     }),
   );
+  api.use(meetingRoutes(db));
+  api.use(chatRoutes(db));
+  api.use(advisoryRoutes(db));
   app.use("/api", api);
   app.use("/api", (_req, res) => {
     res.status(404).json({ error: "API route not found" });

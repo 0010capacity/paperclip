@@ -418,6 +418,25 @@ function invalidateActivityQueries(
   }
 }
 
+function invalidateChatQueries(
+  queryClient: ReturnType<typeof useQueryClient>,
+  companyId: string,
+) {
+  queryClient.invalidateQueries({ queryKey: queryKeys.chat.messages(companyId) });
+}
+
+function invalidateMeetingQueries(
+  queryClient: ReturnType<typeof useQueryClient>,
+  companyId: string,
+  meetingId?: string,
+) {
+  queryClient.invalidateQueries({ queryKey: queryKeys.meetings.list(companyId) });
+  if (meetingId) {
+    queryClient.invalidateQueries({ queryKey: queryKeys.meetings.detail(meetingId) });
+    queryClient.invalidateQueries({ queryKey: queryKeys.meetings.messages(meetingId) });
+  }
+}
+
 interface ToastGate {
   cooldownHits: Map<string, number[]>;
   suppressUntil: number;
@@ -500,6 +519,30 @@ function handleLiveEvent(
       buildActivityToast(queryClient, expectedCompanyId, payload, currentActor) ??
       buildJoinRequestToast(payload);
     if (toast) gatedPushToast(gate, pushToast, `activity:${action ?? "unknown"}`, toast);
+  }
+
+  // Chat events
+  if (event.type === "chat.message" || event.type === "chat.action_resolved") {
+    invalidateChatQueries(queryClient, expectedCompanyId);
+    return;
+  }
+
+  // Meeting events
+  if (event.type === "meeting.started") {
+    invalidateMeetingQueries(queryClient, expectedCompanyId);
+    return;
+  }
+
+  if (event.type === "meeting.message") {
+    const meetingId = readString(payload.meetingId);
+    invalidateMeetingQueries(queryClient, expectedCompanyId, meetingId ?? undefined);
+    return;
+  }
+
+  if (event.type === "meeting.concluded") {
+    const meetingId = readString(payload.meetingId);
+    invalidateMeetingQueries(queryClient, expectedCompanyId, meetingId ?? undefined);
+    return;
   }
 }
 
